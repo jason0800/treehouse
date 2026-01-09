@@ -1,9 +1,9 @@
-// import { useEffect, useState, useRef, useCallback } from 'react';
+import { useState } from 'react';
 import { Save, ChevronDown, ChevronRight, SquareArrowOutUpRight, Plus, PlusCircleIcon } from 'lucide-react';
 
 export default function Sidebar() {
   // const [structuresIndex, setstructuresIndex] = useState([]);
-  // const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
 
   // const isDragging = useRef(false);
 
@@ -41,31 +41,31 @@ export default function Sidebar() {
   // }, [onMouseMove, onMouseUp]);
 
   return (
-    <div className="sidebar" style={{ width: 200 }} onClick={()=>console.log("clicked")}>
-      <button onClick={()=>console.log("Clicked on create new structure!!!")} className="sidebar-button">
+    <div className="sidebar" style={{ width: 210 }} onClick={()=>console.log("clicked")}>
+      <button onClick={()=>console.log("Create a new structure!!!")} className="sidebar-button">
         <PlusCircleIcon size={18} />
         New structure
       </button>
-      <button onClick={() => console.log("Clicked!!")} className="sidebar-button save-button">
+      <button onClick={() => console.log("Save a structure!!")} className="sidebar-button save-button">
         <Save size={18} />
         Save structure
       </button>
-      <button onClick={() => console.log("Clicked!")} className="sidebar-button save-button">
+      <button onClick={() => console.log("Export a structure!!")} className="sidebar-button save-button">
         <SquareArrowOutUpRight size={18} />
         Export structure
       </button>
 
       <div className="saved-structures">
-        <button onClick={() => console.log("hello")} className="saved-structures-toggle">
+        <button onClick={() => setCollapsed(!collapsed)} className="saved-structures-toggle">
           <span className="toggle-icon">
-            {/* {collapsed ? <ChevronRight size={16} /> : <ChevronDown size={16} />} */}
+            {collapsed ? <ChevronRight size={16} /> : <ChevronDown size={16} />}
             Structures
           </span>
         </button>
 
-        {/* {!collapsed && (
+        {!collapsed && (
           <div className="saved-structures-list">
-            {structuresIndex.length === 0 && (
+            {/* {structuresIndex.length === 0 && (
               <div className="saved-structures-empty">No saved structures</div>
             )}
             {structuresIndex.map((structure) => (
@@ -77,9 +77,10 @@ export default function Sidebar() {
               >
                 {structure.structureName}
               </div>
-            ))}
+            ))} */}
+            <div className="saved-structures-empty">No saved structures</div>
           </div>
-        )} */}
+        )}
       </div>
 
       {/* Drag handle */}

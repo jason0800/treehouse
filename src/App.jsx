@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge } from '@xyflow/react';
+// import useHandlers from './hook/useHandlers';
 import Sidebar from './ui/SideBar';
 import '@xyflow/react/dist/style.css';
  
@@ -8,10 +9,15 @@ const initialNodes = [
   { id: 'n2', position: { x: 0, y: 100 }, data: { label: 'Node 2' } },
 ];
 const initialEdges = [{ id: 'n1-n2', source: 'n1', target: 'n2' }];
- 
+
 export default function App() {
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
+
+  // const {
+  //   sidebarWidth,
+  //   handleSidebarWidth
+  // } = useHandlers()
  
   const onNodesChange = useCallback(
     (changes) => setNodes((nodesSnapshot) => applyNodeChanges(changes, nodesSnapshot)),
