@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge } from '@xyflow/react';
+import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge, Background, Controls} from '@xyflow/react';
 // import useHandlers from './hook/useHandlers';
 import Sidebar from './ui/SideBar';
 import '@xyflow/react/dist/style.css';
@@ -33,16 +33,22 @@ export default function App() {
   );
  
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <Sidebar/>
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
-        fitView
-      />
+    <div style={{ display: 'flex', height: '100vh', width: '100vw', overflow: 'hidden' }}>
+      <Sidebar />
+      <div style={{ flex: 1, height: '100vh' }}>
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          onConnect={onConnect}
+          fitView
+          style={{ width: '100%', height: '100%' }}
+        >
+          <Background/>
+          <Controls/>
+        </ReactFlow>
+      </div>
     </div>
   );
 }
